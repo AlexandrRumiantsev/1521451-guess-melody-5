@@ -6,7 +6,7 @@ const AuthScreen = (props) => {
   return (
     <React.Fragment>
       <main className="app">
-        <svg xmlns="http://www.w3.org/2000/svg" style={props.styles.svg}>
+        <svg xmlns="http://www.w3.org/2000/svg" className='svg'>
           <filter id="blur">
             <feGaussianBlur in="SourceGraphic" stdDeviation="5"></feGaussianBlur>
             <feOffset dx="0" dy="0"></feOffset>
@@ -39,7 +39,7 @@ const AuthScreen = (props) => {
       </main>
       <footer className="footer">
         <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
-          <img src="img/icon-cc.png" alt="Creative Commons License" width="88" height="31" style={props.styles.border0} />
+          <img src="img/icon-cc.png" alt="Creative Commons License" width="88" height="31" className="border0"/>
         </a>
         <section className="copyright">
           <a className="copyright__logo" href="https://htmlacademy.ru"><img src="img/logo-htmla.svg" width="144" height="49" alt="HTML Academy" /></a>
@@ -50,8 +50,5 @@ const AuthScreen = (props) => {
   );
 };
 
-AuthScreen.propTypes = {
-  styles: PropTypes.object.isRequired
-};
 
 export default AuthScreen;

@@ -6,7 +6,7 @@ const QuestionGenre = (props) => {
   return (
     <React.Fragment>
       <main className="app">
-        <svg xmlns="http://www.w3.org/2000/svg" style={props.styles.svg}>
+        <svg xmlns="http://www.w3.org/2000/svg" class="svg">
           <filter id="blur">
             <feGaussianBlur in="SourceGraphic" stdDeviation="5"></feGaussianBlur>
             <feOffset dx="0" dy="0"></feOffset>
@@ -25,7 +25,7 @@ const QuestionGenre = (props) => {
               </a>
               <svg xmlns="http://www.w3.org/2000/svg" className="timer" viewBox="0 0 780 780">
                 <circle className="timer__line" cx="390" cy="390" r="370"
-                  style={props.styles.circle} />
+                  class="circle" />
               </svg>
               <div className="game__mistakes">
                 <div className="wrong"></div>
@@ -84,7 +84,7 @@ const QuestionGenre = (props) => {
       </main>
       <footer className="footer">
         <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
-          <img src="img/icon-cc.png" alt="Creative Commons License" width="88" height="31" style={props.styles.border0} />
+          <img src="img/icon-cc.png" alt="Creative Commons License" width="88" height="31" class="border0" />
         </a>
         <section className="copyright">
           <a className="copyright__logo" href="https://htmlacademy.ru"><img src="img/logo-htmla.svg" width="144" height="49" alt="HTML Academy" /></a>
@@ -93,10 +93,6 @@ const QuestionGenre = (props) => {
       </footer>
     </React.Fragment>
   );
-};
-
-QuestionGenre.propTypes = {
-  styles: PropTypes.object.isRequired,
 };
 
 export default QuestionGenre;

@@ -17,40 +17,24 @@ import {
 
 const App = (props) => {
   const {errorsCount} = props;
-  const styles = {
-    svg: {
-      position: `absolute`,
-      left: `-1200em`
-    },
-    border0: {
-      borderWidth: 0
-    },
-    circle: {
-      filter: `url('#blur')`,
-      transform: [
-        {scaleY: -1},
-        {rotate: `-90deg`}
-      ],
-      transformOrigin: `center`
-    }
-  };
+  
   return (
     <Router>
       <Switch>
         <Route exact path="/login">
-          <AuthScreen styles={styles} />
+          <AuthScreen />
         </Route>
         <Route exact path="/result">
-          <ResultSuccess styles={styles} />
+          <ResultSuccess />
         </Route>
         <Route exact path="/lose">
-          <GameOver styles={styles} />
+          <GameOver />
         </Route>
         <Route exact path="/dev-artist">
-          <QuestionArtist styles={styles}/>
+          <QuestionArtist />
         </Route>
         <Route exact path="/dev-genre">
-          <QuestionGenre styles={styles}/>
+          <QuestionGenre />
         </Route>
         <Route exact path="/">
           <WelcomeScreen errorsCount={errorsCount} />
