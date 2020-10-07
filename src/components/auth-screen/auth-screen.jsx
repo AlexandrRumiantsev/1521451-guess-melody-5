@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const AuthScreen = (props) => {
+const AuthScreen = () => {
 
   return (
     <React.Fragment>

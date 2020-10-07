@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const GameOver = (props) => {
+const GameOver = () => {
 
   return (
     <React.Fragment>

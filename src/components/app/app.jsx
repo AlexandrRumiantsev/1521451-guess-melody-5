@@ -8,6 +8,8 @@ import ResultSuccess from '../result-success/result-success.jsx';
 import GameOver from '../game-over/game-over.jsx';
 import QuestionArtist from '../question-artist/question-artist.jsx';
 import QuestionGenre from '../question-genre/question-genre.jsx';
+import GameScreen from '../game-screen/game-screen.jsx';
+
 
 import {
   BrowserRouter as Router,
@@ -16,8 +18,9 @@ import {
 } from "react-router-dom";
 
 const App = (props) => {
-  const {errorsCount} = props;
-  
+  const {errorsCount, questions} = props;
+  const [firstQuestions, secondQuestions] = questions;
+
   return (
     <Router>
       <Switch>
@@ -30,14 +33,35 @@ const App = (props) => {
         <Route exact path="/lose">
           <GameOver />
         </Route>
+        <Route exact path="/game">
+          <GameScreen
+            errorsCount={errorsCount}
+            questions={questions}
+          />
+        </Route>
         <Route exact path="/dev-artist">
-          <QuestionArtist />
+          <QuestionArtist
+            onAnswer={()=>{}}
+            question={secondQuestions}/>
         </Route>
         <Route exact path="/dev-genre">
-          <QuestionGenre />
+          <QuestionGenre
+            onAnswer={()=>{}}
+            question={firstQuestions}
+          />
         </Route>
-        <Route exact path="/">
-          <WelcomeScreen errorsCount={errorsCount} />
+        <Route exact
+          path="/"
+          render={({history})=> (
+            <WelcomeScreen
+              onPlayBtnClick={
+                ()=> {
+                  history.push(`/game`);
+                }
+              }
+              errorsCount={errorsCount} />
+          )}
+        >
         </Route>
       </Switch>
     </Router>
@@ -46,6 +70,7 @@ const App = (props) => {
 
 App.propTypes = {
   errorsCount: PropTypes.number.isRequired,
+  questions: PropTypes.array.isRequired,
 };
 
 export default App;
