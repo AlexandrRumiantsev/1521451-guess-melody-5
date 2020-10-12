@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
-import {genreQuestion__answers} from './genreQuestion__answers';
+import {genreAnswers} from './genreAnswers';
 import {GameType} from '../const/GameType';
 
 const genreQuestion = {
-    answers: PropTypes.arrayOf(
+  answers: PropTypes.arrayOf(
       PropTypes.shape(
-        genreQuestion__answers
+          genreAnswers
       )
-    ).isRequired,
-    genre: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(
-    	[GameType.ARTIST, GameType.GENRE]
-    ).isRequired
-}
+  ).isRequired,
+  genre: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(
+      [GameType.ARTIST, GameType.GENRE]
+  ).isRequired
+};
 
-export {genreQuestion}
+export {genreQuestion};

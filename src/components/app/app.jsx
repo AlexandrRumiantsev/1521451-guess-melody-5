@@ -21,10 +21,8 @@ const App = (props) => {
   const {errorsCount, questions} = props;
   const [firstQuestions, secondQuestions] = questions;
 
-  const answerDefault = () => {
-      console.log('Заготовка')
-  }
-  
+  const answerDefault = () => {};
+
   return (
     <Router>
       <Switch>
@@ -45,12 +43,20 @@ const App = (props) => {
         </Route>
         <Route exact path="/dev-artist">
           <QuestionArtist
-            onAnswer={()=>{answerDefault}}
+            onAnswer={
+              ()=>{
+                answerDefault();
+              }
+            }
             question={secondQuestions}/>
         </Route>
         <Route exact path="/dev-genre">
           <QuestionGenre
-            onAnswer={()=>{answerDefault}}
+            onAnswer={
+              ()=>{
+                answerDefault();
+              }
+            }
             question={firstQuestions}
           />
         </Route>

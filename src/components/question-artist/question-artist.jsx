@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {GameType} from '../../const/GameType';
 import {questionArtist} from '../../shapes/questionArtist';
 
 const QuestionArtist = (props) => {
@@ -77,7 +76,6 @@ const QuestionArtist = (props) => {
     </React.Fragment>
   );
 };
-
 
 
 QuestionArtist.propTypes = {

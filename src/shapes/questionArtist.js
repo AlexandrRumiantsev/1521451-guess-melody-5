@@ -4,17 +4,17 @@ import {answersArtist} from './answersArtist';
 import {songArtist} from './songArtist';
 
 const questionArtist = {
-    answers: PropTypes.arrayOf(
+  answers: PropTypes.arrayOf(
       PropTypes.shape(
-        answersArtist
+          answersArtist
       )
-    ),
-    song:PropTypes.shape(
-        songArtist
-    ),
-    type: PropTypes.oneOf(
+  ),
+  song: PropTypes.shape(
+      songArtist
+  ),
+  type: PropTypes.oneOf(
       [GameType.ARTIST, GameType.GENRE]
-    ).isRequired
-}
+  ).isRequired
+};
 
 export {questionArtist};

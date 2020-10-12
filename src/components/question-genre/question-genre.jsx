@@ -10,12 +10,12 @@ class QuestionGenre extends PureComponent {
       answers: [false, false, false, false],
     };
   }
-  сhangeAnswer(event, userAnswers, index){
-      const userAnswer = event.target.checked;
+  сhangeAnswer(event, userAnswers, index) {
+    const userAnswer = event.target.checked;
 
-      this.setState({
-          answers: [...userAnswers.slice(0, index), userAnswer, ...userAnswers.slice(index + 1)],
-      });
+    this.setState({
+      answers: [...userAnswers.slice(0, index), userAnswer, ...userAnswers.slice(index + 1)],
+    });
   }
   render() {
     const {onAnswer, question} = this.props;
@@ -65,11 +65,11 @@ class QuestionGenre extends PureComponent {
                       id={`answer-${i}`}
                       onChange={(evt) => {
                         this.сhangeAnswer(
-                                evt,
-                                userAnswers,
-                                i
-                            )
-                        }
+                            evt,
+                            userAnswers,
+                            i
+                        );
+                      }
                       }
                     />
                     <label className="game__check" htmlFor={`answer-${i}`}>Отметить</label>
@@ -90,7 +90,7 @@ class QuestionGenre extends PureComponent {
 QuestionGenre.propTypes = {
   onAnswer: PropTypes.func.isRequired,
   question: PropTypes.shape(
-    genreQuestion
+      genreQuestion
   ).isRequired
 };
 
