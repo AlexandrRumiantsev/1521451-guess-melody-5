@@ -21,7 +21,7 @@ const App = (props) => {
   const {errorsCount, questions} = props;
   const [firstQuestions, secondQuestions] = questions;
 
-  const answerDefault = () => {};
+  const noop = () => {};
 
   return (
     <Router>
@@ -45,7 +45,7 @@ const App = (props) => {
           <QuestionArtist
             onAnswer={
               ()=>{
-                answerDefault();
+                noop();
               }
             }
             question={secondQuestions}/>
@@ -54,7 +54,7 @@ const App = (props) => {
           <QuestionGenre
             onAnswer={
               ()=>{
-                answerDefault();
+                noop();
               }
             }
             question={firstQuestions}
