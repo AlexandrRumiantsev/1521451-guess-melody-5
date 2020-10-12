@@ -5,7 +5,7 @@ const ResultSuccess = () => {
   return (
     <React.Fragment>
       <main className="app">
-        <svg xmlns="http://www.w3.org/2000/svg" className="svg">
+        <svg xmlns="http://www.w3.org/2000/svg" className="app__svg">
           <filter id="blur">
             <feGaussianBlur in="SourceGraphic" stdDeviation="5"></feGaussianBlur>
             <feOffset dx="0" dy="0"></feOffset>

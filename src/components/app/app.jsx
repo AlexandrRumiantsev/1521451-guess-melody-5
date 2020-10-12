@@ -21,6 +21,10 @@ const App = (props) => {
   const {errorsCount, questions} = props;
   const [firstQuestions, secondQuestions] = questions;
 
+  const answerDefault = () => {
+      console.log('Заготовка')
+  }
+  
   return (
     <Router>
       <Switch>
@@ -41,12 +45,12 @@ const App = (props) => {
         </Route>
         <Route exact path="/dev-artist">
           <QuestionArtist
-            onAnswer={()=>{}}
+            onAnswer={()=>{answerDefault}}
             question={secondQuestions}/>
         </Route>
         <Route exact path="/dev-genre">
           <QuestionGenre
-            onAnswer={()=>{}}
+            onAnswer={()=>{answerDefault}}
             question={firstQuestions}
           />
         </Route>
@@ -70,7 +74,7 @@ const App = (props) => {
 
 App.propTypes = {
   errorsCount: PropTypes.number.isRequired,
-  questions: PropTypes.array.isRequired,
+  questions: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
 };
 
 export default App;

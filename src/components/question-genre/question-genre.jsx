@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {GameType} from '../../const/GameType';
+import {genreQuestion} from '../../shapes/genreQuestion';
 
 class QuestionGenre extends PureComponent {
   constructor(props) {
@@ -10,8 +10,13 @@ class QuestionGenre extends PureComponent {
       answers: [false, false, false, false],
     };
   }
+  сhangeAnswer(event, userAnswers, index){
+      const userAnswer = event.target.checked;
 
-
+      this.setState({
+          answers: [...userAnswers.slice(0, index), userAnswer, ...userAnswers.slice(index + 1)],
+      });
+  }
   render() {
     const {onAnswer, question} = this.props;
     const {answers: userAnswers} = this.state;
@@ -45,7 +50,7 @@ class QuestionGenre extends PureComponent {
               }}
             >
               {answers.map((answer, i) => (
-                <div key={`${i}-${answer.src}`} className='track'>
+                <div key={`${answer.id}-${answer.src}`} className='track'>
                   <button className="track__button track__button--play" type="button"></button>
                   <div className="track__status">
                     <audio
@@ -59,12 +64,13 @@ class QuestionGenre extends PureComponent {
                       value={`answer-${i}`}
                       id={`answer-${i}`}
                       onChange={(evt) => {
-                        const val = evt.target.checked;
-
-                        this.setState({
-                          answers: [...userAnswers.slice(0, i), val, ...userAnswers.slice(i + 1)],
-                        });
-                      }}
+                        this.сhangeAnswer(
+                                evt,
+                                userAnswers,
+                                i
+                            )
+                        }
+                      }
                     />
                     <label className="game__check" htmlFor={`answer-${i}`}>Отметить</label>
                   </div>
@@ -83,14 +89,9 @@ class QuestionGenre extends PureComponent {
 
 QuestionGenre.propTypes = {
   onAnswer: PropTypes.func.isRequired,
-  question: PropTypes.shape({
-    answers: PropTypes.arrayOf(PropTypes.shape({
-      src: PropTypes.string.isRequired,
-      genre: PropTypes.string.isRequired,
-    })).isRequired,
-    genre: PropTypes.string.isRequired,
-    type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired
-  }).isRequired
+  question: PropTypes.shape(
+    genreQuestion
+  ).isRequired
 };
 
 export default QuestionGenre;

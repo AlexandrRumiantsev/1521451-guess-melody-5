@@ -18,7 +18,7 @@ class GameScreen extends PureComponent {
     const {step} = this.state;
     const question = questions[step];
 
-    if (!question || step >= question.lenght) {
+    if (!question || step >= question.length) {
       return (
         <Redirect to="/" />
       );
@@ -56,7 +56,7 @@ class GameScreen extends PureComponent {
 }
 
 GameScreen.propTypes = {
-  questions: PropTypes.array.isRequired,
+  questions: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
 };
 
 export default GameScreen;
