@@ -6,8 +6,6 @@ import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
 import AuthScreen from '../auth-screen/auth-screen.jsx';
 import ResultSuccess from '../result-success/result-success.jsx';
 import GameOver from '../game-over/game-over.jsx';
-import QuestionArtist from '../question-artist/question-artist.jsx';
-import QuestionGenre from '../question-genre/question-genre.jsx';
 import GameScreen from '../game-screen/game-screen.jsx';
 
 
@@ -19,9 +17,6 @@ import {
 
 const App = (props) => {
   const {errorsCount, questions} = props;
-  const [firstQuestions, secondQuestions] = questions;
-
-  const noop = () => {};
 
   return (
     <Router>
@@ -41,31 +36,12 @@ const App = (props) => {
             questions={questions}
           />
         </Route>
-        <Route exact path="/dev-artist">
-          <QuestionArtist
-            onAnswer={
-              ()=>{
-                noop();
-              }
-            }
-            question={secondQuestions}/>
-        </Route>
-        <Route exact path="/dev-genre">
-          <QuestionGenre
-            onAnswer={
-              ()=>{
-                noop();
-              }
-            }
-            question={firstQuestions}
-          />
-        </Route>
         <Route exact
           path="/"
-          render={({history})=> (
+          render={({history}) => (
             <WelcomeScreen
               onPlayBtnClick={
-                ()=> {
+                () => {
                   history.push(`/game`);
                 }
               }
