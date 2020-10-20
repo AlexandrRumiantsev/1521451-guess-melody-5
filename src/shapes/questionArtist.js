@@ -4,8 +4,10 @@ import {answersArtist} from './answersArtist';
 import {songArtist} from './songArtist';
 
 const questionArtist = {
-  answers: PropTypes.shape(
-      answersArtist
+  answers: PropTypes.arrayOf(
+      PropTypes.shape(
+          answersArtist
+      )
   ),
   song: PropTypes.shape(
       songArtist

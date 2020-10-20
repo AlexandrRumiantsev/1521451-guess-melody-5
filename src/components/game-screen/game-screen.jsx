@@ -4,7 +4,6 @@ import {Redirect} from "react-router-dom";
 import {GameType} from '../../const/GameType';
 import QuestionArtist from '../question-artist/question-artist.jsx';
 import QuestionGenre from '../question-genre/question-genre.jsx';
-import {gameScreen} from '../../shapes/gameScreen';
 
 class GameScreen extends PureComponent {
   constructor(props) {
@@ -57,11 +56,7 @@ class GameScreen extends PureComponent {
 }
 
 GameScreen.propTypes = {
-  questions: PropTypes.arrayOf(
-      PropTypes.shape(
-          gameScreen
-      ).isRequired
-  )
+  questions: PropTypes.array.isRequired
 };
 
 export default GameScreen;
