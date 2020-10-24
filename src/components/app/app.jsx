@@ -1,62 +1,44 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import {Switch, Route, BrowserRouter} from "react-router-dom";
+import WelcomeScreen from "../welcome-screen/welcome-screen";
+import AuthScreen from "../auth-screen/auth-screen";
+import GameOverScreen from "../game-over-screen/game-over-screen";
+import WinScreen from "../win-screen/win-screen";
+import GameScreen from "../game-screen/game-screen";
+import {MAX_MISTAKE_COUNT} from "../../const";
 
-
-import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
-import AuthScreen from '../auth-screen/auth-screen.jsx';
-import ResultSuccess from '../result-success/result-success.jsx';
-import GameOver from '../game-over/game-over.jsx';
-import GameScreen from '../game-screen/game-screen.jsx';
-
-
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
-
-const App = (props) => {
-  const {errorsCount, questions} = props;
-
+const App = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <Switch>
-        <Route exact path="/login">
-          <AuthScreen />
-        </Route>
-        <Route exact path="/result">
-          <ResultSuccess />
-        </Route>
-        <Route exact path="/lose">
-          <GameOver />
-        </Route>
-        <Route exact path="/game">
-          <GameScreen
-            errorsCount={errorsCount}
-            questions={questions}
-          />
-        </Route>
         <Route exact
           path="/"
           render={({history}) => (
             <WelcomeScreen
-              onPlayBtnClick={
-                () => {
-                  history.push(`/game`);
-                }
-              }
-              errorsCount={errorsCount} />
+              onPlayButtonClick={() => history.push(`/game`)}
+              errorsCount={MAX_MISTAKE_COUNT}
+            />
           )}
-        >
+        />
+        <Route exact path="/login">
+          <AuthScreen />
+        </Route>
+        <Route exact path="/result">
+          <WinScreen />
+        </Route>
+        <Route exact path="/lose">
+          <GameOverScreen />
+        </Route>
+        <Route exact path="/game">
+          <GameScreen
+            errorsCount={MAX_MISTAKE_COUNT}
+          />
         </Route>
       </Switch>
-    </Router>
+    </BrowserRouter>
   );
 };
 
-App.propTypes = {
-  errorsCount: PropTypes.number.isRequired,
-  questions: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-};
+App.propTypes = {};
 
 export default App;

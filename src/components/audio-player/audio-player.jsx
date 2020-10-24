@@ -1,5 +1,6 @@
-import React, {PureComponent, Fragment, createRef} from 'react';
-import PropTypes from 'prop-types';
+import React, {PureComponent, Fragment, createRef} from "react";
+import PropTypes from "prop-types";
+
 
 export default class AudioPlayer extends PureComponent {
   constructor(props) {
@@ -11,6 +12,7 @@ export default class AudioPlayer extends PureComponent {
       isLoading: true,
     };
   }
+
   componentDidMount() {
     const {src} = this.props;
     const audio = this._audioRef.current;
@@ -21,10 +23,13 @@ export default class AudioPlayer extends PureComponent {
       isLoading: false,
     });
   }
+
   componentWillUnmount() {
     const audio = this._audioRef.current;
+
     audio.oncanplaythrough = null;
   }
+
   render() {
     const {isLoading} = this.state;
     const {onPlayButtonClick, isPlaying} = this.props;
@@ -34,7 +39,7 @@ export default class AudioPlayer extends PureComponent {
         <button
           className={`track__button track__button--${isPlaying ? `pause` : `play`}`}
           type="button"
-          disable={`${isLoading}`}
+          disabled={isLoading}
           onClick={onPlayButtonClick}
         />
         <div className="track__status">
@@ -46,6 +51,7 @@ export default class AudioPlayer extends PureComponent {
       </Fragment>
     );
   }
+
   componentDidUpdate() {
     const audio = this._audioRef.current;
 
@@ -58,7 +64,7 @@ export default class AudioPlayer extends PureComponent {
 }
 
 AudioPlayer.propTypes = {
-  onPlayButtonClick: PropTypes.func.isRequired,
   isPlaying: PropTypes.bool.isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired,
   src: PropTypes.string.isRequired,
 };
